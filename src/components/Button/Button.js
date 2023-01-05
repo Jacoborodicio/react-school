@@ -9,6 +9,7 @@ import {useHistory} from "react-router-dom";
 
 const StyledButton = styled('button')`
   all: unset;
+  background-color: var(--blue-ncs);
   box-shadow: 0 0 4px rgb(66, 61, 63), 2px 4px 2px rgba(66, 61, 63, .2);
   display: inline-flex;
   justify-content: center;
@@ -18,6 +19,7 @@ const StyledButton = styled('button')`
   width: 2.5rem;
   height: 1.5rem;
   cursor: pointer;
+  transition: .2s background;
   &:hover {
     background: white;
   }
