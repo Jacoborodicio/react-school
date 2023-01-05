@@ -1,30 +1,25 @@
-import {useState} from 'react';
-import "./App.css";
-import "./App.scss";
-import logoReact from './assets/images/react-logo.svg';
+import React, {lazy, Suspense} from 'react';
+import useWindowDimensions from "./hooks/useWindowDimensions";
+import {CacheProvider} from '@emotion/react';
+import createCache from '@emotion/cache';
+import {prefixer} from "stylis";
+import "./styles.css";
+
+const myCache = createCache({
+    key: 'simple',
+    stylesPlugins: [
+        prefixer
+    ],
+})
+const Dashboard = lazy(() => import('./components/Dashboard/Dashboard'))
+
 const App = () => {
-    const [name, setName] = useState('');
-
+    const {width, height} = useWindowDimensions();
     return (
-        <div className='app'>
-            <h3>React skeleton app</h3>
-            <div>
-                <p>Hello from React :)</p>
-                <div>
-                    <img src={logoReact} width={32} height={32} alt='react-logo'/>
-                </div>
-            </div>
-            <div>
-                <label htmlFor='name'>Name: </label>
-                <input
-                    id='name'
-                    type='text'
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    />
-            </div>
-        </div>
-    )
-}
-
+        <CacheProvider value={myCache}>
+            <Suspense fallback={''}>
+                <Dashboard width={width} height={height}/>
+            </Suspense>
+        </CacheProvider>
+    )};
 export default App;

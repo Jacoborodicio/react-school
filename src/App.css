@@ -3,6 +3,6 @@
 }
 
 .app {
-    background-color: var(--primary-main);
+    border: 1px solid var(--primary-main);
     padding: 1rem;
 }

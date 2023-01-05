@@ -6,7 +6,7 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, "../dist"),
         filename: "[name].[contenthash].js",
-        publicPath: "/new-skeleton-webpack/",
+        publicPath: "/simple/",
         clean: true
     },
     module: {
@@ -28,7 +28,8 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
-            template: "./public/index.html"
+            template: "./public/index.html",
+            favicon: "./src/favicon.ico"
         })
     ]
 }

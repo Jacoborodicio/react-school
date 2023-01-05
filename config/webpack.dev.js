@@ -1,8 +1,8 @@
-const { HotModuleReplacementPlugin } = require("webpack");
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const common = require("./webpack.common");
 const {merge} = require("webpack-merge");
 const path = require("path");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 const developConfig = {
     mode: "development",
@@ -11,13 +11,11 @@ const developConfig = {
     },
     devServer: {
         port: 3000,
-        static: {
+        static: [{
             directory: path.join(__dirname, '../dist'),
-            publicPath: '/'
-        },
-        historyApiFallback: {
-            index: 'index.html'
-        },
+            publicPath: '/',
+        }],
+        historyApiFallback: true,
         compress: true,
         hot: true
         // open: "chrome" // To open the browser directly
@@ -25,7 +23,16 @@ const developConfig = {
     },
     target: "web",
     plugins: [
-        new ReactRefreshWebpackPlugin()
+        new ReactRefreshWebpackPlugin(),
+        new CopyWebpackPlugin({
+            patterns: [{
+                from: './src/manifest.json',
+                to: 'manifest.json'
+            },
+                {
+                    from: './src/assets/icons'
+                }]
+        })
     ],
     devtool: "eval-source-map",
     module: {
