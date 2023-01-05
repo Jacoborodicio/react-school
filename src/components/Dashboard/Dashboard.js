@@ -8,6 +8,7 @@ const TopicsPanel = lazy(() => import('./TopicsPanel'));
 const CssGrid = lazy(() => import('../CssGrid/CssGrid'));
 const SpringAnimations = lazy(() => import('../SpringAnimations/SpringAnimations'));
 const DevPlace = lazy(() => import('../DevPlace/DevPlace'));
+const Debounce = lazy(() => import('../Debounce/Debounce'));
 
 const Dashboard = ({width, height, history}) => {
     const containerProps = {
@@ -35,6 +36,11 @@ const Dashboard = ({width, height, history}) => {
                 <Route exact path={'/dev-place'}>
                     <Suspense fallback={''}>
                         <DevPlace/>
+                    </Suspense>
+                </Route>
+                <Route exact path={'/debounce'}>
+                    <Suspense fallback={''}>
+                        <Debounce/>
                     </Suspense>
                 </Route>
                 </Switch>

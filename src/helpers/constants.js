@@ -89,6 +89,16 @@ export const mainTopics = [
         stars: 0, // Number of reputation stars
         ratio: 0, // Global valuation from 0-5
         link: '/dev-place'
+    },
+    {
+        id: 10,
+        title: 'Debouncing',
+        image: '/simple/defaultCodeImg.png',
+        imageDescription: 'A place to try stuff while developing the rest of Code School',
+        description: 'Improving performance by debouncing expensive operations',
+        stars: 1232, // Number of reputation stars
+        ratio: 4.9, // Global valuation from 0-5
+        link: '/debounce'
     }
 ]
 export const testimonials = [
